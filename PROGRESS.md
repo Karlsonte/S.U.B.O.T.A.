@@ -1,7 +1,37 @@
 # Что сделано/реализовано:
 
 
-
+- 26.05.26:
+   - Созданы файлы `SUBOTA_TECH_SPEC.md`, `SUBOTA_DESIGN.md`, `SUBOTA_BACKLOG.md` для фиксации пути к релизу
+   - Исправлен баг 
+   ```bash
+   2026-03-24 11:25:15 | ERROR | core.redis_event_bus | Ошибка при обработке события 'WEATHER' хэндлером 'stream_event_dispatcher': list index out of range
+   Traceback (most recent call last):
+   File "/media/m2_2/subota_3.0/core/redis_event_bus.py", line 128, in subscribe_to_group
+      await handler_func(event_type, data, time_stamp)
+   File "/media/m2_2/subota_3.0/scripts/weather_script/v2.py", line 79, in stream_event_dispatcher
+      await self.get_weather(payload=payload, dry_run=self.dry_run)
+   File "/media/m2_2/subota_3.0/modules/subbota_service.py", line 589, in wrapper
+      return await func(self, payload, *args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/media/m2_2/subota_3.0/scripts/weather_script/v2.py", line 148, in get_weather
+      await self.process_response(payload=data, dry_run=dry_run)
+   File "/media/m2_2/subota_3.0/scripts/weather_script/v2.py", line 168, in process_response
+      city = payload['data']['content']['entities'][0].get('text', None)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+   IndexError: list index out of range
+   ```
+   - Написан тест `tests/integration/test_isolated_runner.py`, логика зафиксирована
+   - Написаны тесты `tests/unit/test_intent_processor.py` и `tests/unit/test_simple_intent_mapper.py`, логика зафиксирована.
+   - *WebController*: 
+      - Настроен Rate Limiting на `/auth/login`: через централизованный синглтон limiter, защищает эндпоинт от зациклившихся скриптов и попыток брутфорса, отдавая честный 429 Too Many Requests.
+      - Запись в security_audit_log: Реализована. Теперь в отдельном файле security.log фиксируются все SUCCESS_LOGIN и FAILED_LOGIN с указанием пользователя и его IP-адреса (с безопасной проверкой на None).
+      - Бан IP: Отказ от этой фичи — это взвешенное архитектурное решение, а не пропуск задачи. Для локальной сети с динамическими IP (DHCP) автоматический жесткий бан принес бы больше проблем с самоблокировкой, чем реальной пользы. Мы заменили его мягким ограничением по времени (через slowapi), что полностью решает задачу безопасности.
+   - Написан тесты `tests/integration/test_emergency_system.py`, логика `EmergencyBuffer`, `EmergencyService` и `core/services/emergency_gate_wrapper.py`зафиксирована. 
+   - Написан *ReminderHandlerService*, скрипт для обработки интента 'ADD_REMINDER'. 
+   - Исправлен на версию 3 `TaskScheduler` и `AlarmHandlerService`.
+   - Написан простейший `DebugIntentService`, цель просто перехватывать и логировать некоторые события в системе, например то как возвращает интенты `isolated_runner`
+   - Из `weather_script` полностью удален `Mashin Spirit` по причине смены парадигмы регистрации моста.
 
 - 20.05.26:
   #### Смена парадигмы всей системы и возврат к "корням".
