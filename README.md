@@ -157,3 +157,4 @@ With the basic functionality complete, it's time to transform Subota from a "sma
 
 ##### [Raod map](./ROADMAP.md)
 ##### [Architecture overview](./architecture_overview.md)
+##### [System docs (as it is)](./S.U.B.O.T.A.%20docs%20ENG.pdf)
