@@ -1,7 +1,8 @@
-# ⚙️ S.U.B.O.T.A.
+# ⚙️ S.U.B.O.T.A. 
 #### (*System Unit of Binary Operations & Technical Assistance*)
-## Multifunctional Local Assistant and Automation Platform [Alpha Version]
-![Python](https://img.shields.io/badge/Python-3.11%2B-blue?style=flat-square&logo=python)
+#### Your home that knows you
+##### Multifunctional Local Assistant and Automation Platform [Alpha Version]
+![Python](https://img.shields.io/badge/Python-3.13%2B-blue?style=flat-square&logo=python)
 ![Asyncio](https://img.shields.io/badge/Core-Asyncio-4D88FE?style=flat-square&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/DB-PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
@@ -10,17 +11,17 @@
 ![Tests](https://img.shields.io/badge/Tests-40%2B%20Pytest-green?style=flat-square)
 ![License](https://img.shields.io/github/license/Karlsonte/Subota-Multifunctional-Assistant?style=flat-square)
 
-### 🚀 Introduction and Motivation
+### Introduction and Motivation
 
-The Subota project is inspired by the idea of ​​creating a **maximally autonomous, locally controlled assistant** that serves not only as a voice interface but also as a centralized platform for automation and security.
+The S.U.B.O.T.A. project is inspired by the idea of creating a **maximally autonomous, locally controlled assistant** that serves not only as a voice interface but also as a centralized platform for automation and security.
 
-**The idea is based on the concept of "Servitor"**: a highly specialized, reliable and fully controllable system capable of performing a wide range of tasks - from simple information ("What time is it?") to multi-level monitoring and home security (Computer Vision, Smart Home, Scripts).
+**The idea is inspired by the concept of a "Servitor"** — a purpose-built assistant designed to perform specific tasks according to defined rules and under its creator's control. In S.U.B.O.T.A., this concept represents a reliable digital assistant that can monitor, automate, and manage tasks while remaining predictable and controllable.
 
-### 🎯 Key Goal of the Project
+### Key Goal of the Project
 
-#### "Jarvis... Sometimes you gotta run, before you can walk" - Tony Stark (Iron Man 2008)
+#### "Jarvis... Sometimes you gotta run before you can walk" - Tony Stark (Iron Man 2008)
 
-Create a **private, extensible, and fault-tolerant ecosystem** where all data processing and management logic is executed **strictly locally**.
+Create a **private, extensible, and fault-tolerant ecosystem** where the core logic runs locally and the user retains control over system data, automation, and device management.
 
 The main emphasis is on:
 
@@ -28,133 +29,118 @@ The main emphasis is on:
 2.  **Modular Architecture:** Ensuring easy addition of new features and system resilience to failures.
 3.  **Multi-Channel Interaction:** Support for voice control, Telegram, Web/REST API.
 
-## 💾 2. Historical Context and Iterations (Subota 1.0 & 2.0)
-
-The Subota project went through two prototype iterations, which became a critical foundation for the design of the current asynchronous platform (3.0). These prototypes demonstrated both the potential of the idea and the architectural limitations of a synchronous, monolithic approach.
-
 <p><br></p>
 
-### Subota 1.0 (Jarvis_1.0) — NLP and System Integration
+## 1. Historical Context and Iterations (S.U.B.O.T.A. 1.0 & 2.0)
 
-**Technologies:** Python (Synchronous), Vosk, Scikit-learn (Logistic Regression/Count Vectorizer), pyttsx3, psutil.
+The S.U.B.O.T.A. project went through two prototype iterations, which became a critical foundation for the design of the current asynchronous platform (3.0). These prototypes demonstrated both the potential of the idea and the architectural limitations of a synchronous, monolithic approach.
 
-**Key Achievements and Demonstrated Skills:**
+### S.U.B.O.T.A. 1.0 — The First Attempt at JARVIS
 
-* **Custom NLP/NLU (Natural Language):** Implemented a custom query processing script based on **Logistic Regression** and **Count Vectorizer** to classify intents by key phrases (`data_set`).
-* **Voice Computing (Critical Module):** Developed the `numbers_text_to_int` (NL to Math) module, which allowed for complex mathematical calculations to be performed on **Vosk** (as text), including handling of **fractional numbers** and **operator precedence** (e.g. $2+3\cdot4$).
-* **Low-Level OS Integration:** Implemented volume control (`pycaw`), system monitoring (`psutil`) and OS command execution (`subprocess`), which provided basic functionality for "smart" PC management.
-* **Speech Processing:** Used **Vosk** for speech recognition and **pyttsx3/SileroTTS** (in later versions) for synthesis.
+The idea for S.U.B.O.T.A. started with a simple inspiration: JARVIS from *Iron Man*.
 
-#### 💡 **Main Lesson 1.0:**
+I have always loved the technology in the Marvel *Iron Man* films and Christopher Nolan's *The Dark Knight* trilogy. For me, Tony Stark's most fascinating creation wasn't his suit or his cars — it was JARVIS. Batman had the Batcomputer, too: an incredibly capable system, but ultimately a computer following rules. JARVIS felt closer to the kind of intelligent assistant I wanted to build.
 
-The synchronous architecture and reliance on a phrase-based classifier **prevented the system from scaling easily** (adding new features) and led to blocking while waiting for I/O operations (for example, when accessing external APIs or starting long-running processes). This became the direct trigger for the transition to the asynchronous and modular design of 3.0.
+I knew I couldn't create a real JARVIS. I had only just finished learning Python, and typical beginner projects — simple websites and Twitter clones — didn't excite me. I wanted to try something more ambitious, even if I had no idea how far I could take it.
 
-#### 🖼️ **Code Demo**
+So I started experimenting.
+
+I found a basic YouTube tutorial and spent a couple of hours copying a rough prototype. It wasn't much: an endless loop, a microphone, Vosk speech recognition, and a single command — "time" — that returned the system time. Recognition was unreliable, and the command had to match the expected phrase almost exactly. Still, it worked. Sometimes.
+
+I added a few more commands for things like weather, Steam, and opening a browser. But expanding the command list meant adding more phrase variations and more `if/else` statements. That approach quickly became tedious, and I didn't yet know how to solve the problem properly.
+
+There was one feature I was particularly proud of: **S.U.B.O.T.A. could do math using spoken language.** I could say, "Calculate seven point zero five plus eight point two," and it would work out the result and speak it back as "fifteen point two five."
+
+Eventually, I reached the limits of what I knew. Rather than keep adding features without understanding how to build the system properly, I put the project aside and started studying what other people had done.
+
+That was the end of the first attempt — but not the end of S.U.B.O.T.A.
+
+##### 🖼️ **Code Demo**
 * [numbers_text_to_int.py](./showcase_code/v1_0/numbers_text_to_int.py)
+---
 
-<p><br></p>
+### S.U.B.O.T.A. 2.0 — From Voice Commands to Experiments
 
-### Subota 2.0 – Computer Vision, LLM and a Modular Approach
+A few months later, I returned to S.U.B.O.T.A.. I wanted to get a job in IT, and I felt I needed a serious project — something more substantial than another tutorial.
 
-<figure align="center">
-    <img src="./subota_v2.0.png" alt="Subota 2.0 Graph" width="700" />
- <figcaption style="text-align: center; font-size: 0.9em; color: #555;">
-     Made with <a href="http://www.gitvizz.com" target="_blank">GitWizz</a>
- </figcaption>
-    <p><br></p>
-</figure>
+It was also the beginning of the AI boom. I started reading other people's code, watching tutorials, and exploring ways to make the assistant more capable.
 
-**Main Idea:** Recognizing the need for a **flexible, non-rigidly programmed system** with controlled freedom of action. The project became a step towards creating a **"smart" assistant** and moving from a monolith to a plug-in architecture.
+I began with familiar building blocks: a Telegram bot, server time, and weather information. Each feature taught me something different. The system could respond to commands, retrieve information from the internet, and communicate beyond the local console by sending messages through Telegram.
 
-**Technologies:** Python, **Computer Vision (OpenCV, YOLOv8, cv2)**, **LLM Integration (llama_cpp)**, **Multithreading (threading)**, SileroTTS, Vosk.
+I also began thinking about **protocols**: groups of functions that could be executed together in response to a command. One of the ideas that emerged during this period was using S.U.B.O.T.A. for home security.
 
-**Key Achievements and Demonstrated Skills:**
+But the old problem returned. As I added more commands, the growing collection of `if/else` statements became increasingly difficult to maintain. I first experimented with matching recognized phrases against a dictionary and choosing a command when the match passed a similarity threshold. It wasn't flexible enough: similar phrases could be misinterpreted, while supporting more variations required a lot of manual work.
 
-* **Computer Vision (CV):** Successfully implemented the `protocol_watch_dog.py` security protocol, which uses **YOLOv8** to detect motion, people, and potentially dangerous situations.
-    * **Example:** Implemented real-time object detection, event binding to the camera and sending notifications.
-* **Модульная Архитектура (Плагины):** Проект был разделен на модули с использованием классов **Plugin** и **EventHandler**, что продемонстрировало переход к **слабосвязанному дизайну** (даже в рамках синхронного ядра).
-* **Notification and Integration System:** A multi-channel notification system has been implemented (Telegram: text only, Email: photo with timestamp) when a CV event is detected.
-* **First Experience with LLM:** Connecting the local **LLaMA** model via `llama_cpp` for a more "fluent" response to complex queries (despite the speed limitations due to the lack of a GPU, experience with LLM has been gained).
-* **Custom NLP classifier:** A custom model for user intent recognition has been trained but not implemented.
+#### Training My Own NLP Model
 
-#### 💡 **Main Lesson 2.0:**
+I started studying natural language processing and eventually trained my own NLP model on a CPU. I prepared a dataset of more than 10,000 lines by hand.
 
-The introduction of CV and LLM dramatically increased the requirements for **parallel data processing**. Using standard `threading` and a synchronous core to simultaneously run LLM, CV, and voice control threads led to performance and resource management issues. It became clear that high-load and I/O-dependent tasks required **a complete transition to an asynchronous model (`asyncio`)** and an event-driven core.
+The model learned to recognize user intents and extract entities. For example, a request such as "Show me the weather in Kyiv" could be represented as a `weather` intent with `Kyiv` as an entity. The model supported around ten intents, but they were my own commands, designed for the system I was building.
 
-#### 🖼️ **Code Demo**
+Preparing the dataset turned out to be less time-consuming than training the model on a CPU. Despite its limitations, this was an important milestone: **the custom NLP model I trained during this period is still part of S.U.B.O.T.A. 3.0.**
+
+#### Computer Vision Experiments
+
+I also experimented with computer vision using a small YOLO model.
+
+One of my funniest experiments happened when the model identified my long-haired cat as a sheep.
+
+But I was also able to get a basic security scenario working. I tested whether the camera system could detect a person holding a potentially dangerous object, such as a knife or scissors. I walked in front of the camera with empty hands and then with scissors, and the system detected the scenario during my tests.
+
+I connected the detection to notifications: Telegram sent a warning, while email delivered a photo from the camera.
+
+It was an early experiment rather than a finished security product, but it showed me how voice processing, computer vision, and external notifications could work together.
+
+#### When Adding Features Wasn't Enough
+
+As the project grew, I experimented with Python's `threading` to run different tasks alongside one another. I expected it to solve my performance problems, but coordinating data between threads became difficult, and the system grew increasingly fragile.
+
+The more features I added, the harder it became to understand, maintain, and debug the whole application. I eventually stopped trying to restore the entire system as a working product and began treating S.U.B.O.T.A. 2.0 as an experimental playground.
+
+I needed more than additional features. I needed to understand how to structure the system itself.
+
+That realization led me to study software architecture — and eventually to rethink S.U.B.O.T.A. from the ground up.
+
+* ##### 🖼️ **Code Demo**
 * [plugin.py](./showcase_code/v2_0/plugin.py)
 * [protocol_watch_dog.py](./showcase_code/v2_0/protocol_watch_dog.py)
 
 <p><br></p>
 
-### Subota 3.0 (alpha) — Asynchronous Event-based Core and Digital Butler
+### S.U.B.O.T.A. 3.0 — Asynchronous, Event-Driven Core
 
 <figure align="center">
-    <img src="./subota_3.0.png" alt="Subota 2.0 Graph" width="700" />
- <figcaption style="text-align: center; font-size: 0.9em; color: #555;">
-     Made with <a href="http://www.gitvizz.com" target="_blank">GitWizz</a>
- </figcaption>
+    <img src="./subota_3.0.png" alt="S.U.B.O.T.A. 3.0 Architecture" width="700" />
+    <figcaption style="text-align: center; font-size: 0.9em; color: #555;">
+        Made with <a href="http://www.gitvizz.com" target="_blank">GitWizz</a>
+    </figcaption>
     <p><br></p>
 </figure>
 
-**Key Idea:** Create a fully **asynchronous, modular, and fault-tolerant** core for performing digital butler tasks, monitoring, and managing devices in real time. Addressing the scalability and reliability issues inherent in versions 1.0 and 2.0.
+**Key Idea:** Create a fully **asynchronous, modular, and fault-tolerant** core for digital butler tasks, real-time monitoring, and device management. S.U.B.O.T.A. 3.0 addresses the scalability and reliability challenges encountered in versions 1.0 and 2.0.
 
-**Architecture:** Fully **asynchronous (asyncio)**, **event-driven** architecture (EDA) using **Redis Event Bus** as the central message bus. The system utilizes a microservices approach (FastAPI, Uvicorn) and containerization (Docker: Redis, PostgreSQL).
+**Architecture:** An asynchronous, event-driven architecture built around Python `asyncio` and a **Redis Event Bus** for communication between modules. The system uses FastAPI and Uvicorn for its API layer, with Docker-based infrastructure services including Redis and PostgreSQL.
 
-**Technologies (Key Aspects):**
+**Technologies (Key Components):**
 
-* **Asynchronous Stack:** Python **asyncio**, **FastAPI** (API Gateway, WebSockets), **Uvicorn**, **aioredis**, **asyncpg**.
-* **Condition and Storage:** **PostgreSQL** (long memory), **Redis** (ContextManager, EventBus), **Alembic** (database migrations).
-* **Reliability/DevOps:** **TaskWatcher** (process monitoring), **HealthChecker**, **Graceful Shutdown**, **MetricsCollector** (collecting CPU, RAM, Latency), **Docker** (containerization of services), **Backup/Restore** scripts.
-* **Interaction:** **Voice Input/Output** (Vosk/SileroTTS), **Telegram Bot**, **WebUI** (Bootstrap/FontAwesome), **API Gateway** (JWT Auth).
-* **Safety:** **AuthManager** (JWT), **RBACManager** (access rights), **SecretManager**.
-* **Code Quality:** Full-fledged **Unit and Integration Testing (Pytest)** — 200+ tests.
+* **Asynchronous Core:** Python `asyncio`, FastAPI, Uvicorn, `aioredis`, `asyncpg`.
+* **State and Storage:** PostgreSQL, Redis, ContextManager, EventBus, Alembic.
+* **Monitoring and Reliability:** TaskWatcher, HealthChecker, Graceful Shutdown, MetricsCollector, Backup/Restore.
+* **Interaction:** Voice Input/Output (Vosk/SileroTTS), Telegram Bot, WebUI (Bootstrap/Font Awesome), API Gateway, WebSockets.
+* **Security and Access Control:** AuthManager (JWT), RBACManager, SecretManager.
+* **Testing:** A new Pytest-based test suite is being developed following the core rewrite, with 40+ tests currently in place.
 
-#### 🎯 Key Professional Achievements in 3.0:
+#### Key Achievements in 3.0
 
-1.  **Building a Fault-Tolerant Engine (EDA):** Implementation of Redis Event Bus, which isolates failures in handlers and provides **reliable data transfer** between modules (IntentProcessor, ScriptRunner, Senders).
-2.  **Full Monitoring and Management System:** Implementation of **TaskWatcher** and **MetricsCollector**, which collect real-time process load and status data and store it in PostgreSQL. This forms the basis for the Health Dashboard.
-3.  **Unified Command and Notification Interface:** Unifies all input/output channels (Voice, CLI, Telegram, WebUI) via **SessionManager** and **NotificationManager**. The Assistant responds to the source of the command.
-5.  **Comprehensive Security:** Implementation of **RBACManager** and **AuthManager** (JWT, permissions) to control access to API and UI functions, which is key for a home management project.
-6.  **Testability:** Building a comprehensive testing framework using `pytest-asyncio` to test critical components (Authentication, EventBus, Scheduler).
+1. **Event-Driven Core:** Introduced a Redis Event Bus to decouple modules and establish a common communication mechanism between components such as IntentProcessor, ScriptRunner, and notification senders.
+2. **Monitoring and Health Management:** Developed TaskWatcher and MetricsCollector to track process status and resource usage, providing a foundation for the Health Dashboard.
+3. **Unified Interaction:** Connected voice input, CLI, Telegram, and WebUI through shared session and notification management, allowing responses to be routed back to the originating interaction channel.
+4. **Access Control:** Implemented JWT-based authentication and role-based access control for API and UI operations.
+5. **Testability:** Rebuilding the test suite around the rewritten core, with a focus on unit and integration testing using `pytest` and `pytest-asyncio`.
 
-#### 🖼️ **Code Demo**
-[**RBAC Manager**](./showcase_code/v3_0/rbac_manager.py)
+#### Source Code
 
-##### 🌐 Asynchronous Device Discovery: DiscoveryManager
-[**DiscoveryManager**](/showcase_code/v3_0/discovery_manager_snippet.py)
+The source code for S.U.B.O.T.A. 3.0 will be made publicly available after the release of **V3.0.0-alpha.0**.
 
-### 🔍 Current Work: 🛡️ Stage 3.5 — Security Hardening ⚡
-The current development phase is fundamentally strengthening the system according to Zero Trust principles.
-
-With the basic functionality complete, it's time to transform Subota from a "smart assistant" into a "secure fortress." This phase is dedicated to systematically eliminating vulnerabilities identified during the security audit and implementing multi-layered protection.
-
-#### 🎯 Key goals of this phase:
-- Access control: Every device and user must prove their right to perform every action.
-- Data integrity: No event in the system can be tampered with or intercepted.
-- Risk isolation: A hack of one component should not compromise the entire system.
-- Fault tolerance: The system must fail safely and protect data in the event of any failure.
-
-#### 🔐 Key Focus Areas:
-##### 🔴 Critical Priority — Security Foundation:
-- Trusted Event Bus: Implementing HMAC signatures for all messages in Redis. Any event without a valid digital signature is ignored by the kernel.
-- Secure Network Perimeter: Configuring Zero Trust on MikroTik — new devices on the network are automatically quarantined until manually approved.
-- Secure Data Gateway: MQTT broker with TLS, strict ACLs, and a validator bridge that verifies and signs data from IoT devices before transmitting it to the kernel.
-
-##### 🟠 High Priority — Interface Security:
-- Depth-based Authentication: Implementing two-factor authentication (TOTP/Google Authenticator) for critical commands in Telegram and voice control.
-- NLP/LLM injection protection: Sandboxing for external data processing, strict system prompts, and mandatory "man-in-the-loop" confirmation for commands generated from parsing.
-- Hardware security: Transition from vulnerable HID emulation to a secure serial protocol with nonce and handshake for all DIY devices (Arduino, ESP).
-
-##### 🟡 Medium priority — Intelligent protection:
-- Smart presence logic: Multi-Sensor Fusion — the system determines whether the owner is home based on a combination of indicators (Wi-Fi, Bluetooth, motion sensors), rather than a single indicator.
-- Anti-EW filter: Protects geolocation scenarios from GPS spoofing and electronic jamming.
-- Fail-safe states: Clearly defined system behavior scenarios in the event of loss of connection to sensors, the internet, or a critical server battery drain.
-
-##### 🟢 Low Priority — Technical Debt:
-- Docker Hardening: Isolate containers on separate networks, run as unprivileged users, limit resources.
-- Secret Management Refactoring: Move the master key from configuration files to hardware storage (SD card with a physical lock switch).
-
-##### [Raod map](./ROADMAP.md)
+##### [Roadmap](./WORKPLAN_S.U.B.O.T.A..md)
 ##### [Architecture overview](./architecture_overview.md)
-##### [System docs (as it is)](./S.U.B.O.T.A.%20docs%20ENG.pdf)
